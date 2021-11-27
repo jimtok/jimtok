@@ -1,4 +1,4 @@
-- 👋 Hi, I’m Yames Isa, but i prefe5 to be called Jim Koto.
+- 👋 Hi, I’m Yames Isa, but i prefer to be called Jim Koto.
 - 👀 I’m interested in Search Engine Optimization (SEO).
 - 🌱 I’m currently learning "how to make money from internet".
 - 💞️ I’m looking to collaborate on my StarUp Projects.
