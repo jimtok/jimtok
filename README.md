@@ -9,7 +9,7 @@
 JIMTOK is a Lab for Digital Preneur.
 ,.. it's a New Era for Digital Lifestyle Enthusiasm!
 
-If You're connecting internet, You'll be connected to https://Akomoda.Network
+If You're connecting internet, You'll be connected to https://AkomodaNetwork.com
 
 BEYOND YOUR EXPECTATIONS ✌🏼 
 <!---
