@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Jimtok.com - Labs for Digital Lifestyle | OUR BUSINESS WORLD WIDE</title>
+    <meta name="description" content="Jimtok.com: Labs for Digital Lifestyle. Digital Lifestyle Enthusiasm | Beyond Expectations. Meneroka inovasi Property Online & AI terkemuka untuk bisnis global.">
+    <meta name="keywords" content="Jimtok, Labs for Digital Lifestyle, OUR BUSINESS WORLD WIDE, Digital Lifestyle Enthusiasm, Beyond Expectations, Jim Koto, Sahabat Perjalanan, Property Online, AI Optimization, Konsultan Digital, Webmaster, Publisher, Koto Projects, Inovasi Digital">
+    <meta name="author" content="Jim Koto">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Philosopher:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        :root {
+            --bg-main: #FDFDFB; /* Warm Neutral Off-white */
+            --bg-secondary: #F4F2EE; /* Lighter Beige/Gray */
+            --text-primary: #3A3A3A; /* Dark Gray */
+            --text-secondary: #6B6B6B; /* Medium Gray */
+            --accent-primary: #386641; /* Deep Forest Green (Credible, professional) */
+            --accent-secondary: #A3B18A; /* Muted Olive Green (Humble, supporting) */
+            --eye-catching-accent: #4ADDAF; /* Vibrant Teal/Cyan (Futuristic, eye-catching) */
+            --border-color: #EAE8E4; /* Soft border color */
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-primary);
+        }
+        .philosopher {
+            font-family: 'Philosopher', sans-serif;
+        }
+        .fade-in {
+            animation: fadeInAnimation ease 1s;
+            animation-iteration-count: 1;
+            animation-fill-mode: forwards;
+        }
+        @keyframes fadeInAnimation {
+            0% { opacity: 0; transform: translateY(10px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        .hub-node, .spoke-node {
+            transition: all 0.3s ease;
+        }
+        .hub-node:hover, .spoke-node:hover, .spoke-node.active {
+            transform: scale(1.05);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .spoke-node.active {
+            border-color: var(--eye-catching-accent); /* Eye-catching border for active spoke */
+            border-width: 3px;
+        }
+        .blinking-cursor {
+            font-weight: 100;
+            animation: blink 1s step-end infinite;
+        }
+        @keyframes blink {
+            from, to { color: transparent; }
+            50% { color: var(--eye-catching-accent); } /* Blinking with eye-catching color */
+        }
+        .bg-hero-gradient {
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-main) 100%);
+        }
+        .text-gradient-hero {
+            background-image: linear-gradient(to right, var(--accent-primary), var(--eye-catching-accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+        }
+    </style>
+</head>
+<body class="antialiased leading-relaxed">
+
+    <!-- Header & Navigasi -->
+    <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 border-b border-[var(--border-color)]">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#hero" class="text-2xl philosopher font-bold text-[var(--accent-primary)]">Jimtok.com.</a>
+            <div class="hidden md:flex items-center space-x-8 text-sm font-semibold">
+                <a href="#profil" class="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors">Profil</a>
+                <a href="#ekosistem" class="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors">Ekosistem</a>
+                <a href="#pemikiran" class="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors">Pemikiran</a>
+                <a href="#strategi" class="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors">Peta Jalan</a>
+                <a href="#kontak" class="bg-[var(--accent-primary)] text-white px-5 py-2 rounded-full hover:bg-opacity-90 transition-all">Hubungi</a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden text-2xl">☰</button>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-[var(--border-color)]">
+            <a href="#profil" class="block text-center py-3 px-4 text-sm hover:bg-[var(--bg-secondary)]">Profil</a>
+            <a href="#ekosistem" class="block text-center py-3 px-4 text-sm hover:bg-[var(--bg-secondary)]">Ekosistem</a>
+            <a href="#pemikiran" class="block text-center py-3 px-4 text-sm hover:bg-[var(--bg-secondary)]">Pemikiran</a>
+            <a href="#strategi" class="block text-center py-3 px-4 text-sm hover:bg-[var(--bg-secondary)]">Peta Jalan</a>
+            <a href="#kontak" class="block text-center py-3 px-4 text-sm bg-[var(--accent-secondary)] text-white">Hubungi</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-12 md:py-20">
+
+        <!-- Hero Section -->
+        <section id="hero" class="text-center min-h-[60vh] flex flex-col items-center justify-center bg-hero-gradient rounded-3xl shadow-xl p-8 mb-20 relative overflow-hidden">
+            <h1 class="text-4xl md:text-6xl lg:text-7xl philosopher font-bold mb-4 text-gradient-hero">
+                OUR BUSINESS WORLD WIDE<br>BEYOND EXPECTATIONS<span class="blinking-cursor">_</span>
+            </h1>
+            <p class="text-lg md:text-xl max-w-3xl mx-auto text-[var(--text-primary)] font-semibold mb-8">
+                **Jimtok.com : Labs for Digital Lifestyle.**
+            </p>
+            <div class="mt-8 flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                <a href="#ekosistem" class="bg-[var(--eye-catching-accent)] text-white px-8 py-3 rounded-full font-semibold hover:opacity-90 transition-all shadow-lg">Jelajahi Lab Kami</a>
+                <a href="#kontak" class="bg-white text-[var(--accent-primary)] px-8 py-3 rounded-full font-semibold hover:bg-[var(--bg-secondary)] transition-all border border-[var(--accent-primary)] shadow-lg">Hubungi Kami</a>
+            </div>
+        </section>
+
+        <!-- Profil & Klarifikasi Identitas -->
+        <section id="profil" class="py-16 md:py-24">
+             <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl philosopher font-bold text-[var(--accent-primary)]">Profil & Visi Jim Koto</h2>
+                <p class="mt-4 max-w-2xl mx-auto text-[var(--text-secondary)]">Memahami identitas, kemampuan, dan motivasi di balik proyek-proyek inovatif ini.</p>
+            </div>
+            <div class="bg-white p-8 md:p-12 rounded-2xl shadow-sm border border-[var(--border-color)] grid md:grid-cols-3 gap-8 items-center">
+                <div class="md:col-span-1 flex flex-col items-center text-center">
+                    <img src="https://placehold.co/200x200/F4F2EE/3A3A3A?text=JK" alt="Profil Jim Koto" class="w-40 h-40 rounded-full mb-4 object-cover border-4 border-white shadow-lg">
+                    <h3 class="text-2xl philosopher font-bold text-[var(--text-primary)]">James Isa a.k.a Jim Koto</h3>
+                    <p class="text-[var(--text-secondary)]">Konsultan Multifaset & Strategis Digital</p>
+                </div>
+                <div class="md:col-span-2 text-base">
+                    <p class="mb-4">Identitas **'Jim Koto'** adalah perpaduan unik antara nama panggilan "Jim" dan "Koto," yang diambil dari nama salah satu Suku Bangsa terkemuka di Sumatera Barat, Indonesia—Minangkabau. Ini memberikan konteks budaya yang mendalam pada jenama pribadi saya.</p>
+                    <p class="mb-4">Dianugerahi kemampuan **'Multifaset'**, saya memiliki pengalaman luas dalam membangun bisnis online dari nol. Saya sengaja memilih untuk tidak mempublikasikan profil formal demi fokus pada kontribusi nyata: mengambil peran 'Sebagai Anak Bangsa untuk membangun Negeri' melalui keahlian digital.</p>
+                    <p class="mb-4">Fokus saya saat ini adalah mengembangkan **Bisnis Online**, meliputi **Affiliate Marketing**, **Publisher**, **Webmaster**, dan **Konsultan Bisnis** untuk UKM serta Bisnis Perorangan, dengan penekanan khusus pada optimalisasi **Property Online** menggunakan **AI terkemuka** di dunia.</p>
+                     <div class="mt-6 p-4 bg-[var(--bg-secondary)] rounded-lg border-l-4 border-[var(--accent-secondary)]">
+                        <h4 class="font-bold text-sm text-[var(--text-primary)]">Penafian Identitas (Sangat Penting)</h4>
+                        <p class="text-sm text-[var(--text-secondary)] mt-1">
+                            Untuk menghindari kerancuan, perlu diklarifikasi bahwa saya, Jim Koto, **tidak memiliki afiliasi** dengan wirausahawan sosial terkemuka Bapak Jimmy Pham atau organisasi "KOTO" (Know One, Teach One) di Vietnam. Visi dan proyek kami beroperasi di ranah yang sepenuhnya berbeda.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ekosistem Bisnis HUB-Spokes -->
+        <section id="ekosistem" class="py-16 md:py-24 bg-[var(--bg-secondary)] -mx-6 px-6">
+            <div class="container mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl philosopher font-bold text-[var(--accent-primary)]">Ekosistem Bisnis: Model HUB-Spokes</h2>
+                    <p class="mt-4 max-w-2xl mx-auto text-[var(--text-secondary)]">Visualisasi bagaimana semua proyek saling terhubung dan mendukung, dengan fokus pada optimalisasi **Property Online** menggunakan **AI**.</p>
+                </div>
+
+                <div class="flex flex-col lg:flex-row gap-8 items-start">
+                    <!-- Diagram Interaktif -->
+                    <div class="w-full lg:w-2/3 relative flex items-center justify-center p-8 bg-white rounded-2xl shadow-sm border border-[var(--border-color)]" style="min-height: 500px;">
+                        <!-- HUB -->
+                        <div id="hub" class="hub-node absolute cursor-pointer bg-white border-4 border-[var(--accent-primary)] text-center rounded-full w-48 h-48 flex flex-col justify-center items-center p-4 shadow-2xl z-20">
+                            <span class="font-bold philosopher text-lg">Jimtok.com</span>
+                            <span class="text-xs text-[var(--text-secondary)] mt-1">Labs for Digital Lifestyle</span>
+                        </div>
+
+                        <!-- Spokes -->
+                        <div id="spoke-kotobatuah" class="spoke-node absolute cursor-pointer bg-white border-2 border-[var(--border-color)] text-center rounded-full w-36 h-36 flex flex-col justify-center items-center p-2 shadow-lg z-10">
+                            <span class="font-bold philosopher">Koto Batuah</span>
+                            <span class="text-xs text-[var(--text-secondary)] mt-1">Agency Periklanan Resmi</span>
+                        </div>
+                         <div id="spoke-akomoda" class="spoke-node absolute cursor-pointer bg-white border-2 border-[var(--border-color)] text-center rounded-full w-36 h-36 flex flex-col justify-center items-center p-2 shadow-lg z-10">
+                            <span class="font-bold philosopher">Akomoda Network</span>
+                            <span class="text-xs text-[var(--text-secondary)] mt-1">Komunitas Online</span>
+                        </div>
+                        <div id="spoke-masp" class="spoke-node absolute cursor-pointer bg-white border-2 border-[var(--border-color)] text-center rounded-full w-36 h-36 flex flex-col justify-center items-center p-2 shadow-lg z-10">
+                            <span class="font-bold philosopher">MASP</span>
+                            <span class="text-xs text-[var(--text-secondary)] mt-1">Property & Auto Ads + Travel</span>
+                        </div>
+                         <div id="spoke-lainnya" class="spoke-node absolute cursor-pointer bg-white border-2 border-[var(--border-color)] text-center rounded-full w-36 h-36 flex flex-col justify-center items-center p-2 shadow-lg z-10">
+                            <span class="font-bold philosopher">Layanan Lain</span>
+                            <span class="text-xs text-[var(--text-secondary)] mt-1">Publisher, Konsultan, Afiliasi</span>
+                        </div>
+                    </div>
+
+                    <!-- Panel Informasi -->
+                    <div id="info-panel" class="w-full lg:w-1/3 p-8 bg-white rounded-2xl shadow-sm border border-[var(--border-color)] min-h-[500px] flex flex-col justify-center">
+                        <h3 id="info-title" class="text-2xl philosopher font-bold mb-4 transition-opacity duration-300 text-[var(--accent-primary)]">HUB Sentral</h3>
+                        <p id="info-description" class="text-[var(--text-secondary)] mb-4 transition-opacity duration-300">Pusat dari personal brand, visi, dan strategi. Ini adalah gerbang utama untuk semua peluang kolaborasi dan titik awal untuk menjelajahi semua proyek (\"Spokes\") yang saya kembangkan.</p>
+                        <div id="info-details" class="text-sm space-y-2 transition-opacity duration-300">
+                            <p><strong>Peran:</strong> Membangun Kredibilitas & Kepercayaan</p>
+                            <p><strong>Tujuan:</strong> Menarik peluang 'Hire or JV' & menyalurkan traffic.</p>
+                        </div>
+                        <a id="info-link" href="https://jimtok.com" target="_blank" class="inline-block mt-6 bg-[var(--eye-catching-accent)] text-white px-5 py-2 rounded-full text-sm font-semibold hover:bg-opacity-90 transition-opacity duration-300">Kunjungi Situs</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Cakrawala Pemikiran -->
+        <section id="pemikiran" class="py-16 md:py-24">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl philosopher font-bold text-[var(--accent-primary)]">Cakrawala Berpikir</h2>
+                <p class="mt-4 max-w-2xl mx-auto text-[var(--text-secondary)]">Aset intelektual adalah fondasi utama. Ini adalah arena untuk berdebat dengan para raksasa pemikiran, menghubungkan titik-titik, dan membangun model mental yang kuat.</p>
+            </div>
+
+            <div class="bg-white rounded-2xl shadow-sm border border-[var(--border-color)] p-4 sm:p-6 md:p-8">
+                <!-- Navigasi Tab Blog -->
+                <div class="border-b border-[var(--border-color)] mb-6 flex space-x-4 sm:space-x-8 overflow-x-auto">
+                    <button class="blog-tab active flex-shrink-0" data-category="Sahabat Perjalanan">Sahabat Perjalanan</button>
+                    <button class="blog-tab flex-shrink-0" data-category="Teknologi Informasi">Teknologi & Informasi</button>
+                    <button class="blog-tab flex-shrink-0" data-category="Gadgets Review">Ulasan Gadget</button>
+                </div>
+
+                <!-- Konten Blog -->
+                <div id="blog-content" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Postingan blog akan dimuat di sini oleh JavaScript -->
+                </div>
+            </div>
+        </section>
+        
+        <!-- Peta Jalan Strategis -->
+        <section id="strategi" class="py-16 md:py-24 bg-[var(--bg-secondary)] -mx-6 px-6">
+            <div class="container mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl philosopher font-bold text-[var(--accent-primary)]">Peta Jalan & Analisis Strategis</h2>
+                    <p class="mt-4 max-w-2xl mx-auto text-[var(--text-secondary)]">Transparansi rencana untuk membangun ekosistem yang solid, termasuk optimalisasi **Property Online** dengan **AI**.</p>
+                </div>
+                <div class="grid lg:grid-cols-5 gap-8">
+                    <!-- Analisis SWOT -->
+                    <div class="lg:col-span-2">
+                        <h3 class="text-xl font-bold mb-4 philosopher text-[var(--accent-primary)]">Analisis SWOT Interaktif</h3>
+                        <div class="grid grid-cols-2 gap-4">
+                            <button class="swot-btn p-4 bg-green-50 border-2 border-green-200 rounded-lg text-left" data-swot="strengths">
+                                <h4 class="font-bold text-green-800">Strengths</h4>
+                                <p class="text-xs text-green-700">Kemampuan internal yang positif.</p>
+                            </button>
+                             <button class="swot-btn p-4 bg-red-50 border-2 border-red-200 rounded-lg text-left" data-swot="weaknesses">
+                                <h4 class="font-bold text-red-800">Weaknesses</h4>
+                                <p class="text-xs text-red-700">Kelemahan internal yang perlu diatasi.</p>
+                            </button>
+                             <button class="swot-btn p-4 bg-blue-50 border-2 border-blue-200 rounded-lg text-left" data-swot="opportunities">
+                                <h4 class="font-bold text-blue-800">Opportunities</h4>
+                                <p class="text-xs text-blue-700">Faktor eksternal yang bisa dimanfaatkan.</p>
+                            </button>
+                             <button class="swot-btn p-4 bg-yellow-50 border-2 border-yellow-200 rounded-lg text-left" data-swot="threats">
+                                <h4 class="font-bold text-yellow-800">Threats</h4>
+                                <p class="text-xs text-yellow-700">Ancaman eksternal yang perlu diwaspadai.</p>
+                            </button>
+                        </div>
+                        <div id="swot-details" class="mt-6 p-6 bg-white rounded-lg border border-[var(--border-color)] min-h-[150px]">
+                            <h4 id="swot-title" class="font-bold text-lg mb-2">Pilih kategori untuk melihat detail.</h4>
+                            <ul id="swot-list" class="list-disc list-inside text-[var(--text-secondary)] text-sm space-y-1"></ul>
+                        </div>
+                    </div>
+                     <!-- Peta Jalan -->
+                    <div class="lg:col-span-3">
+                        <h3 class="text-xl font-bold mb-4 philosopher text-[var(--accent-primary)]">Prioritas Peta Jalan (Fase 1: 2-3 Tahun)</h3>
+                         <div class="chart-container relative h-64 md:h-80 w-full max-w-2xl mx-auto bg-white rounded-lg shadow-sm border border-[var(--border-color)] p-4">
+                            <canvas id="roadmapChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Kontak & CTA -->
+        <section id="kontak" class="py-16 md:py-24 bg-[var(--accent-primary)] text-white -mx-6 px-6">
+            <div class="container mx-auto text-center">
+                 <h2 class="text-3xl md:text-4xl philosopher font-bold">Siap untuk Berkolaborasi?</h2>
+                 <p class="mt-4 max-w-2xl mx-auto text-gray-200">Baik untuk peluang kerja, *joint venture*, atau sekadar berdiskusi tentang ide-ide transformatif, saya siap mendengarkan.</p>
+                 
+                 <!-- Hire or JV Option -->
+                 <a href="mailto:ai@jimkoto.my.id" class="inline-block mt-8 bg-[var(--eye-catching-accent)] text-white px-10 py-4 rounded-full font-bold hover:bg-opacity-90 transition-all shadow-2xl text-lg">Mulai Percakapan (Hire or JV)</a>
+
+                 <!-- Support / Donation Options -->
+                 <div class="mt-12">
+                     <h3 class="text-2xl philosopher font-bold text-gray-100 mb-4">Dukungan & Donasi</h3>
+                     <p class="max-w-2xl mx-auto text-gray-300 mb-6">Jika Anda terinspirasi oleh visi kami dan ingin mendukung perjalanan ini, setiap kontribusi sangat berarti. Anda bisa berdonasi melalui:</p>
+                     
+                     <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+                         <!-- Fiat Money Option -->
+                         <button onclick="alert('Silakan hubungi kami untuk opsi donasi fiat via transfer bank.')" class="bg-white text-[var(--accent-primary)] px-8 py-3 rounded-full font-semibold hover:bg-opacity-90 transition-all shadow-lg text-lg flex items-center justify-center">
+                             <span class="mr-2">💳</span> Fiat Money
+                         </button>
+                         
+                         <!-- Crypto Currency Option -->
+                         <button onclick="alert('Bitcoin (BTC) Wallet: 1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa\nEthereum (ETH) Wallet: 0xAbc123... (Contoh)\n\nSilakan hubungi kami untuk opsi crypto lain.')" class="bg-white text-[var(--accent-primary)] px-8 py-3 rounded-full font-semibold hover:bg-opacity-90 transition-all shadow-lg text-lg flex items-center justify-center">
+                             <span class="mr-2">₿</span> Crypto Currency
+                         </button>
+                     </div>
+                 </div>
+
+                 <div class="mt-10 text-sm text-gray-300">
+                    <p>Anda juga dapat menemukan saya di platform lain atau login ke portal manajemen.</p>
+                    <div class="flex justify-center space-x-6 mt-4">
+                        <a href="https://linkedin.com/in/your-linkedin-profile" target="_blank" class="hover:text-white">LinkedIn</a>
+                        <a href="#" class="hover:text-white">Twitter</a>
+                        <a href="https://jimkoto.my.id" target="_blank" class="font-bold hover:text-white">Jim Koto Blog</a>
+                        <a href="https://portal.jimkoto.my.id" target="_blank" class="font-bold hover:text-white">Portal Login</a>
+                    </div>
+                 </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="text-center py-8 border-t border-[var(--border-color)]">
+        <p class="text-sm text-[var(--text-secondary)]">&copy; 2025 Jim Koto. Semua hak cipta dilindungi.</p>
+    </footer>
+
+    <!-- Modal Blog Post -->
+    <div id="blog-modal" class="fixed inset-0 bg-black bg-opacity-60 hidden items-center justify-center z-50 p-4">
+        <div class="bg-white rounded-2xl shadow-xl max-w-3xl w-full max-h-[90vh] overflow-y-auto relative">
+            <button id="close-modal-btn" class="absolute top-4 right-4 text-2xl text-gray-500 hover:text-black">&times;</button>
+            <div id="modal-content" class="p-8 md:p-12">
+                <!-- Konten modal akan diisi oleh JavaScript -->
+            </div>
+        </div>
+    </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Mobile Menu
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileMenuButton.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+    });
+
+    // Data untuk Ekosistem
+    const ecosystemData = {
+        hub: {
+            title: "Jimtok.com",
+            description: "HUB sentral untuk inovasi Digital Lifestyle dan eksperimen AI. Ini adalah gerbang utama untuk menjelajahi wawasan Property Online dan peluang kolaborasi futuristik.",
+            details: "<p><strong>Peran:</strong> Laboratorium Inovasi & Eksperimen</p><p><strong>Tujuan:</strong> Menarik investor yang berorientasi masa depan & menunjukkan keahlian AI.</p>",
+            link: "https://jimtok.com"
+        },
+        'spoke-kotobatuah': {
+            title: "Kotobatuah.com",
+            description: "Bisnis periklanan resmi yang terdaftar di Departemen Investasi. Fokus pada layanan periklanan properti, kendaraan seken, dan travel Umroh-Haji untuk menghasilkan revenue.",
+            details: "<p><strong>Peran:</strong> Unit Bisnis (Spoke)</p><p><strong>Tujuan:</strong> Generasi revenue langsung.</p>",
+            link: "https://kotobatuah.com"
+        },
+        'spoke-akomoda': {
+            title: "Akomoda Network",
+            description: "Proyek utama yang diproyeksikan sebagai organisasi komunitas online. Fokus pada membangun jaringan yang kuat dan menguntungkan bagi para anggotanya.",
+            details: "<p><strong>Peran:</strong> Pembangunan Komunitas (Spoke)</p><p><strong>Tujuan:</strong> Networking & Pertumbuhan Ekosistem.</p>",
+            link: "https://akomodanetwork.com"
+        },
+        'spoke-masp': {
+            title: "MASP",
+            description: "Multi-Agency Strategic Plan adalah kerangka kerja untuk mengintegrasikan berbagai bidang agency periklanan, termasuk properti (Qhomeproperty), kendaraan (Kotomobil), dan travel.",
+            details: "<p><strong>Peran:</strong> Kerangka Kerja Bisnis (Spoke)</p><p><strong>Tujuan:</strong> Sinergi & Efisiensi Operasional.</p>",
+            link: "#"
+        },
+        'spoke-lainnya': {
+            title: "Layanan Lain",
+            description: "Meliputi kegiatan sebagai Publisher konten, Konsultan bisnis untuk UKM, dan strategi Affiliate Marketing untuk diversifikasi pendapatan.",
+            details: "<p><strong>Peran:</strong> Layanan Profesional (Spoke)</p><p><strong>Tujuan:</strong> Diversifikasi Revenue & Konsultasi.</p>",
+            link: "#"
+        }
+    };
+
+    const infoPanel = document.getElementById('info-panel');
+    const infoTitle = document.getElementById('info-title');
+    const infoDescription = document.getElementById('info-description');
+    const infoDetails = document.getElementById('info-details');
+    const infoLink = document.getElementById('info-link');
+    const spokeNodes = document.querySelectorAll('.spoke-node');
+    const hubNode = document.getElementById('hub');
+
+    function updateInfoPanel(id) {
+        const data = ecosystemData[id] || ecosystemData.hub;
+        
+        infoPanel.style.opacity = 0;
+        setTimeout(() => {
+            infoTitle.textContent = data.title;
+            infoDescription.textContent = data.description;
+            infoDetails.innerHTML = data.details;
+            infoLink.href = data.link;
+            if (data.link === "#") {
+                infoLink.classList.add('hidden');
+            } else {
+                infoLink.classList.remove('hidden');
+            }
+            infoPanel.style.opacity = 1;
+        }, 300);
+
+        spokeNodes.forEach(node => node.classList.remove('active'));
+        if (id !== 'hub') {
+            document.getElementById(id).classList.add('active');
+        }
+    }
+
+    document.querySelectorAll('.hub-node, .spoke-node').forEach(node => {
+        node.addEventListener('click', () => updateInfoPanel(node.id));
+    });
+
+    // Logic untuk posisi dinamis Spokes
+    const hub = document.getElementById('hub');
+    const spokes = Array.from(document.querySelectorAll('.spoke-node'));
+    const radius = 200; 
+    const angleStep = (2 * Math.PI) / spokes.length;
+
+    spokes.forEach((spoke, i) => {
+        const angle = i * angleStep - (Math.PI / 2); 
+        const x = Math.cos(angle) * radius;
+        const y = Math.sin(angle) * radius;
+        spoke.style.transform = `translate(${x}px, ${y}px)`;
+    });
+
+    // Data untuk Blog
+    const blogPostsData = {
+        'Sahabat Perjalanan': [
+            { title: 'Keseimbangan adalah Bentuk Kecerdasan', author: 'Jim Koto', summary: 'Menyelami konsep keseimbangan sebagai fondasi pengambilan keputusan yang cerdas dalam bisnis dan kehidupan.' },
+            { title: 'Paradoks Pilihan di Era Digital', author: 'Jim Koto', summary: 'Bagaimana kelimpahan informasi justru bisa melumpuhkan, dan cara membangun kerangka kerja untuk navigasi.'},
+            { title: 'Seni "Berpikir Lambat" untuk Pemimpin', author: 'Jim Koto', summary: 'Mengaplikasikan model mental Daniel Kahneman untuk strategi jangka panjang yang lebih matang.'}
+        ],
+        'Teknologi Informasi': [
+            { title: 'AI Holistik: Lebih dari Sekadar Otomatisasi', author: 'Jim Koto', summary: 'Melihat AI sebagai partner strategis untuk augmentasi kecerdasan manusia, bukan sekadar pengganti.' },
+            { title: 'Masa Depan Web: Statis, Cepat, dan Aman', author: 'Jim Koto', summary: 'Mengapa arsitektur JAMstack dan platform seperti Vercel/Netlify menjadi standar baru untuk web performa tinggi.' },
+            { title: 'Demistifikasi Blockchain untuk UKM', author: 'Jim Koto', summary: 'Membedah potensi nyata blockchain di luar cryptocurrency, dari rantai pasok hingga verifikasi data.' }
+        ],
+        'Gadgets Review': [
+            { title: 'Framework Laptop: Revolusi Modularitas', author: 'Jim Koto', summary: 'Ulasan mendalam tentang laptop yang bisa Anda perbaiki dan upgrade sendiri. Sebuah langkah melawan budaya buang.' },
+            { title: 'Remarkable 2: Fokus di Dunia yang Penuh Distraksi', author: 'Jim Koto', summary: 'Apakah tablet e-ink ini benar-benar bisa menggantikan buku catatan dan meningkatkan produktivitas?' },
+            { title: 'Ergonomi Kerja Jarak Jauh: Investasi Jangka Panjang', author: 'Jim Koto', summary: 'Review kursi ergonomis, meja berdiri, dan aksesori lain yang vital untuk kesehatan kerja dari rumah.' }
+        ]
+    };
+
+    const blogContent = document.getElementById('blog-content');
+    const blogTabs = document.querySelectorAll('.blog-tab');
+    const blogModal = document.getElementById('blog-modal');
+    const modalContent = document.getElementById('modal-content');
+    const closeModalBtn = document.getElementById('close-modal-btn');
+
+    function displayBlogPosts(category) {
+        const posts = blogPostsData[category];
+        blogContent.innerHTML = '';
+        posts.forEach(post => {
+            const postElement = document.createElement('div');
+            postElement.className = 'bg-[var(--bg-secondary)] p-6 rounded-lg cursor-pointer hover:shadow-md transition-shadow fade-in';
+            postElement.innerHTML = `
+                <h4 class="font-bold text-lg text-[var(--text-primary)] mb-2">${post.title}</h4>
+                <p class="text-sm text-[var(--text-secondary)]">${post.summary}</p>
+                <span class="text-xs text-[var(--accent-secondary)] font-semibold mt-4 inline-block">Baca Selengkapnya...</span>
+            `;
+            postElement.addEventListener('click', () => openBlogModal(post));
+            blogContent.appendChild(postElement);
+        });
+    }
+
+    function openBlogModal(post) {
+        modalContent.innerHTML = `
+            <h2 class="text-3xl philosopher font-bold mb-4">${post.title}</h2>
+            <p class="text-sm text-gray-500 mb-6">Oleh: ${post.author}</p>
+            <div class="prose max-w-none">
+                <p>${post.summary}</p>
+                <p class="mt-4">Ini adalah konten placeholder untuk artikel lengkap. Dalam implementasi nyata, bagian ini akan diisi dengan konten Markdown atau HTML yang kaya dari CMS atau file data Anda.</p>
+                <p>Pembahasan mendalam akan mengeksplorasi nuansa topik, memberikan contoh nyata, dan mengutip berbagai sumber untuk mendukung argumen. Tujuannya adalah untuk memberikan nilai intelektual yang substantif kepada pembaca, sesuai dengan etos 'Cakrawala Berpikir'.</p>
+                <img src="https://placehold.co/600x300/F4F2EE/3A3A3A?text=Visualisasi+Konsep" class="rounded-lg mt-6" alt="Visualisasi Konsep">
+            </div>
+        `;
+        blogModal.classList.remove('hidden');
+        blogModal.classList.add('flex');
+    }
+
+    blogTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            blogTabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+            displayBlogPosts(tab.dataset.category);
+        });
+        
+        // Custom styling for active tab
+        if(tab.classList.contains('active')) {
+             tab.style.color = 'var(--accent-primary)';
+             tab.style.borderBottom = '3px solid var(--accent-primary)';
+             tab.style.fontWeight = '700';
+        } else {
+             tab.style.color = 'var(--text-secondary)';
+             tab.style.borderBottom = '3px solid transparent';
+             tab.style.fontWeight = '600';
+        }
+    });
+
+    // Event listener untuk style active tab
+    blogTabs.forEach(tab => {
+        tab.addEventListener('click', (e) => {
+            blogTabs.forEach(t => {
+                t.style.color = 'var(--text-secondary)';
+                t.style.borderBottom = '3px solid transparent';
+                t.style.fontWeight = '600';
+            });
+            e.target.style.color = 'var(--accent-primary)';
+            e.target.style.borderBottom = '3px solid var(--accent-primary)';
+            e.target.style.fontWeight = '700';
+        });
+    });
+
+
+    closeModalBtn.addEventListener('click', () => {
+        blogModal.classList.add('hidden');
+        blogModal.classList.remove('flex');
+    });
+    blogModal.addEventListener('click', (e) => {
+        if (e.target === blogModal) {
+            blogModal.classList.add('hidden');
+            blogModal.classList.remove('flex');
+        }
+    });
+    
+    // Inisialisasi blog
+    displayBlogPosts('Sahabat Perjalanan');
+
+    // Data untuk SWOT
+    const swotData = {
+        strengths: {
+            title: "Kekuatan (Strengths)",
+            points: ["Kemampuan 'Multifaset' & pengalaman bisnis online.", "Aset intelektual 'Cakrawala Berpikir' yang kuat.", "Visi jelas dengan model HUB-Spokes.", "Portofolio domain yang beragam untuk mitigasi risiko.", "Fokus spesifik pada optimalisasi Property Online dengan AI."]
+        },
+        weaknesses: {
+            title: "Kelemahan (Weaknesses)",
+            points: ["Aksesibilitas 'Koto Projects' saat ini non-aktif.", "Ambiguitas identitas dengan entitas 'KOTO' lain.", "Kurangnya data performa teknis (kecepatan, mobile).", "Ketergantungan pada *personal brand* tunggal."]
+        },
+        opportunities: {
+            title: "Peluang (Opportunities)",
+            points: ["Tingginya permintaan transformasi digital untuk UKM.", "Potensi monetisasi melalui afiliasi & konsultasi.", "Peluang kolaborasi (JV) dengan investor tertarget.", "Memanfaatkan AI untuk efisiensi dan layanan baru.", "Peluang besar di pasar Property Online yang berkembang pesat dengan AI."]
+        },
+        threats: {
+            title: "Ancaman (Threats)",
+            points: ["Kebingungan merek akibat nama 'KOTO' yang umum.", "Perubahan cepat dalam tren teknologi dan SEO.", "Persaingan di pasar konsultasi digital.", "Risiko keamanan siber pada aset digital."]
+        }
+    };
+    
+    const swotBtns = document.querySelectorAll('.swot-btn');
+    const swotTitle = document.getElementById('swot-title');
+    const swotList = document.getElementById('swot-list');
+
+    swotBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const swotCategory = btn.dataset.swot;
+            const data = swotData[swotCategory];
+            swotTitle.textContent = data.title;
+            swotList.innerHTML = data.points.map(point => `<li>${point}</li>`).join('');
+        });
+    });
+
+    // Chart.js untuk Peta Jalan
+    const roadmapData = {
+        labels: ['Fondasi & Identitas', 'Aktivasi Spokes', 'Pengembangan Konten', 'Monetisasi & Kemitraan', 'Audit & Optimasi'],
+        data: [90, 80, 75, 60, 50] // Nilai prioritas (1-100)
+    };
+    const ctx = document.getElementById('roadmapChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: roadmapData.labels,
+            datasets: [{
+                label: 'Tingkat Prioritas',
+                data: roadmapData.data,
+                backgroundColor: 'rgba(56, 102, 65, 0.8)',
+                borderColor: 'rgba(56, 102, 65, 1)',
+                borderWidth: 1,
+                borderRadius: 5
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            indexAxis: 'y',
+            scales: {
+                x: {
+                    beginAtZero: true,
+                    max: 100,
+                    grid: { display: false }
+                },
+                y: {
+                    grid: { display: false }
+                }
+            },
+            plugins: {
+                legend: { display: false },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            return ` Prioritas: ${context.raw}`;
+                        }
+                    }
+                }
+            },
+            
+        }
+    });
+
+});
+</script>
+
+</body>
+</html>
