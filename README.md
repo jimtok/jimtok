@@ -11,7 +11,7 @@ JIMTOK is a Lab for Digital Preneur.
 
 If You're connecting internet, You'll be connected to https://AkomodaNetwork.com
 
-BEYOND YOUR EXPECTATIONS ✌🏼 
+OUR BUSINESS WORLD WIDE | BEYOND YOUR EXPECTATIONS ✌🏼 
 <!---
 jimtok/Labs is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 You can click the Preview link to take a look at your changes.
