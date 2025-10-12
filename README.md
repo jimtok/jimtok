@@ -1,7 +1,7 @@
 - 👋 Hi, I’m James Isa, but i prefer to be called Jim Koto.
 - 👀 I’m interested in Search Engine Optimization (SEO).
 - 🌱 I’m currently learning "how to make money from internet".
-- 💞️ I’m looking to collaborate on my StarUp Projects. .. https://ai.jimtok.com/
+- 💞️ I’m looking to collaborate on my StarUp Projects. .. https://ai-holistic.xyz
 - 📫 How to reach me 👉 explore my profile https://jimkoto.my.id
 
 ~ AVAILABLE FOR HIRE or JV ~
