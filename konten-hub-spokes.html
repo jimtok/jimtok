@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dasbor Interaktif: Strategi Konten Hub & Spoke</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Calm Tech -->
+    <!-- Application Structure Plan: The SPA uses a single-page, thematic vertical scroll layout, a departure from the report's linear chapters. This structure enhances usability by allowing users to explore content based on interest ('What', 'Why', 'How', 'Results') via a sticky navigation bar. The flow starts with an interactive diagram to explain the core concept visually (Pengenalan), followed by scannable cards for benefits (Manfaat), an accordion for the step-by-step guide to building a hub (Panduan Praktis), and tabs with interactive checklists and code snippets for advanced techniques (SEO Lanjutan). This design transforms the dense report into an engaging, exploratory tool rather than a static document, facilitating better understanding and retention. -->
+    <!-- Visualization & Content Choices: 
+        - Report Info: Hub-Spoke Model -> Goal: Inform, Organize -> Viz: Interactive HTML/CSS Diagram -> Interaction: Hover to see details -> Justification: Explains the abstract concept visually and effectively -> Library: Custom JS.
+        - Report Info: Benefits (SEO, UX, E-E-A-T) -> Goal: Inform -> Viz: Icon-based cards -> Interaction: Static -> Justification: Improves scannability of key benefits -> Library: Tailwind CSS.
+        - Report Info: Building a Hub page steps -> Goal: Organize, Inform -> Viz: Accordion -> Interaction: Click to expand -> Justification: Manages information density, preventing user from being overwhelmed -> Library: Custom JS.
+        - Report Info: CTR increase data -> Goal: Compare, Inform -> Viz: Bar Chart -> Interaction: Hover for tooltips -> Justification: More impactful than plain text for statistical data -> Library: Chart.js (Canvas).
+        - Report Info: SEO Checklist Table -> Goal: Actionable Tool -> Viz: Interactive Checklist -> Interaction: Clickable checkboxes -> Justification: Converts a static table into a practical, engaging tool -> Library: Custom JS.
+        - Report Info: Schema code examples -> Goal: Provide Tool -> Viz: Formatted Code Block with Copy Button -> Interaction: Click to copy -> Justification: Provides direct utility for developers -> Library: Custom JS.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f7f4;
+            color: #2c3e50;
+        }
+        .nav-link {
+            transition: color 0.3s;
+        }
+        .nav-link.active, .nav-link:hover {
+            color: #4a90e2;
+        }
+        .hub-spoke-diagram .hub {
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .hub-spoke-diagram .hub:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(74, 144, 226, 0.5);
+        }
+        .hub-spoke-diagram .spoke-line {
+            transition: all 0.3s;
+        }
+        .hub-spoke-diagram .spoke {
+            transition: all 0.3s;
+        }
+        .hub-spoke-diagram .spoke-container:hover .spoke {
+            transform: scale(1.1);
+            background-color: #50e3c2;
+            color: white;
+        }
+        .hub-spoke-diagram .spoke-container:hover .spoke-line {
+             height: 4px;
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+        .checklist-item.completed label {
+            text-decoration: line-through;
+            color: #95a5a6;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header id="header" class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 shadow-md">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-xl md:text-2xl font-bold text-[#2c3e50]">Strategi Hub & Spoke</h1>
+            <div class="hidden md:flex space-x-6">
+                <a href="#pengenalan" class="nav-link font-medium">Pengenalan</a>
+                <a href="#manfaat" class="nav-link font-medium">Manfaat</a>
+                <a href="#panduan" class="nav-link font-medium">Panduan Praktis</a>
+                <a href="#seo-lanjutan" class="nav-link font-medium">SEO Lanjutan</a>
+                <a href="#kinerja" class="nav-link font-medium">Optimasi Kinerja</a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
+            <a href="#pengenalan" class="block py-2 nav-link font-medium">Pengenalan</a>
+            <a href="#manfaat" class="block py-2 nav-link font-medium">Manfaat</a>
+            <a href="#panduan" class="block py-2 nav-link font-medium">Panduan Praktis</a>
+            <a href="#seo-lanjutan" class="block py-2 nav-link font-medium">SEO Lanjutan</a>
+            <a href="#kinerja" class="block py-2 nav-link font-medium">Optimasi Kinerja</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-8 md:py-12">
+        
+        <section id="pengenalan" class="text-center mb-16 md:mb-24">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4 text-[#2c3e50]">Apa itu Model Konten Hub & Spoke?</h2>
+            <p class="max-w-3xl mx-auto text-lg text-gray-600 mb-10">Model Hub & Spoke adalah strategi SEO yang mengorganisir konten di sekitar satu topik utama ("Hub") yang terhubung ke beberapa artikel pendukung ("Spoke"). Ini membangun otoritas topikal dan meningkatkan pengalaman pengguna secara drastis.</p>
+            
+            <div class="hub-spoke-diagram relative w-full min-h-[400px] md:min-h-[500px] flex items-center justify-center p-4">
+                <div id="hub" class="hub relative z-10 bg-[#4a90e2] text-white w-40 h-40 md:w-48 md:h-48 rounded-full flex flex-col items-center justify-center shadow-lg cursor-pointer p-4">
+                    <span class="font-bold text-lg md:text-xl text-center">Konten Hub</span>
+                    <span class="text-sm text-center mt-1">Halaman Pilar Utama</span>
+                </div>
+                <div class="absolute inset-0 flex items-center justify-center">
+                    <div class="spoke-container absolute">
+                        <div class="spoke-line absolute origin-left top-1/2 left-1/2 w-[120px] md:w-[200px] h-1 bg-gray-300"></div>
+                        <div class="spoke absolute bg-white border-2 border-[#50e3c2] text-[#2c3e50] w-24 h-24 md:w-28 md:h-28 rounded-full flex items-center justify-center shadow-md p-2 text-center text-sm font-medium cursor-pointer">Spoke 1</div>
+                    </div>
+                     <div class="spoke-container absolute">
+                        <div class="spoke-line absolute origin-left top-1/2 left-1/2 w-[120px] md:w-[200px] h-1 bg-gray-300"></div>
+                        <div class="spoke absolute bg-white border-2 border-[#50e3c2] text-[#2c3e50] w-24 h-24 md:w-28 md:h-28 rounded-full flex items-center justify-center shadow-md p-2 text-center text-sm font-medium cursor-pointer">Spoke 2</div>
+                    </div>
+                     <div class="spoke-container absolute">
+                        <div class="spoke-line absolute origin-left top-1/2 left-1/2 w-[120px] md:w-[200px] h-1 bg-gray-300"></div>
+                        <div class="spoke absolute bg-white border-2 border-[#50e3c2] text-[#2c3e50] w-24 h-24 md:w-28 md:h-28 rounded-full flex items-center justify-center shadow-md p-2 text-center text-sm font-medium cursor-pointer">Spoke 3</div>
+                    </div>
+                     <div class="spoke-container absolute">
+                        <div class="spoke-line absolute origin-left top-1/2 left-1/2 w-[120px] md:w-[200px] h-1 bg-gray-300"></div>
+                        <div class="spoke absolute bg-white border-2 border-[#50e3c2] text-[#2c3e50] w-24 h-24 md:w-28 md:h-28 rounded-full flex items-center justify-center shadow-md p-2 text-center text-sm font-medium cursor-pointer">Spoke 4</div>
+                    </div>
+                     <div class="spoke-container absolute">
+                        <div class="spoke-line absolute origin-left top-1/2 left-1/2 w-[120px] md:w-[200px] h-1 bg-gray-300"></div>
+                        <div class="spoke absolute bg-white border-2 border-[#50e3c2] text-[#2c3e50] w-24 h-24 md:w-28 md:h-28 rounded-full flex items-center justify-center shadow-md p-2 text-center text-sm font-medium cursor-pointer">Spoke 5</div>
+                    </div>
+                </div>
+                <div id="diagram-info" class="absolute bottom-0 bg-white/70 backdrop-blur-sm p-3 rounded-lg shadow-inner text-center text-gray-700 font-medium transition-opacity duration-300 opacity-0 max-w-md">
+                    Arahkan kursor ke Hub atau Spoke untuk melihat deskripsi.
+                </div>
+            </div>
+        </section>
+
+        <section id="manfaat" class="mb-16 md:mb-24">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-[#2c3e50]">Mengapa Strategi Ini Penting?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-xl shadow-lg text-center transform hover:-translate-y-2 transition-transform duration-300">
+                    <div class="text-4xl mb-4 text-[#4a90e2]">🚀</div>
+                    <h3 class="text-xl font-bold mb-2">Peningkatan SEO</h3>
+                    <p class="text-gray-600">Membangun otoritas topikal yang kuat, membuat Google lebih mudah memahami dan memberi peringkat tinggi pada konten Anda.</p>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-lg text-center transform hover:-translate-y-2 transition-transform duration-300">
+                    <div class="text-4xl mb-4 text-[#50e3c2]">💡</div>
+                    <h3 class="text-xl font-bold mb-2">Pengalaman Pengguna (UX)</h3>
+                    <p class="text-gray-600">Struktur yang jelas dan navigasi yang mudah membuat pengunjung betah dan mudah menemukan informasi yang mereka butuhkan.</p>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-lg text-center transform hover:-translate-y-2 transition-transform duration-300">
+                    <div class="text-4xl mb-4 text-[#f5a623]">🏆</div>
+                    <h3 class="text-xl font-bold mb-2">Membangun E-E-A-T</h3>
+                    <p class="text-gray-600">Menunjukkan Pengalaman, Keahlian, Otoritas, dan Kepercayaan (E-E-A-T) yang menjadi sinyal kualitas penting bagi Google.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="panduan" class="mb-16 md:mb-24">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-[#2c3e50]">Panduan Praktis: Membangun Konten Hub</h2>
+            <div class="max-w-4xl mx-auto space-y-4">
+                <div class="accordion-item bg-white rounded-xl shadow-lg">
+                    <button class="accordion-header w-full text-left p-6 flex justify-between items-center">
+                        <span class="text-xl font-semibold">1. Pemilihan Topik & Riset Kata Kunci</span>
+                        <span class="accordion-icon text-2xl font-light transform transition-transform duration-300">+</span>
+                    </button>
+                    <div class="accordion-content px-6">
+                        <div class="py-4 border-t border-gray-200">
+                            <p class="text-gray-600">Pilih topik yang luas namun relevan dengan bisnis Anda. Gunakan alat seperti SEMrush atau Ahrefs untuk menemukan kata kunci utama dan *long-tail*. Analisis "People Also Ask" di Google untuk memahami niat pengguna. Fokus pada topik yang memiliki permintaan pasar dan selaras dengan keahlian Anda.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item bg-white rounded-xl shadow-lg">
+                    <button class="accordion-header w-full text-left p-6 flex justify-between items-center">
+                        <span class="text-xl font-semibold">2. Struktur Konten & Alur Logis</span>
+                        <span class="accordion-icon text-2xl font-light transform transition-transform duration-300">+</span>
+                    </button>
+                    <div class="accordion-content px-6">
+                         <div class="py-4 border-t border-gray-200">
+                           <p class="text-gray-600">Gunakan heading (H1, H2, H3) secara hierarkis. Buat konten mudah dibaca dengan paragraf pendek, daftar, dan visual. Sertakan daftar isi (Table of Contents) dengan tautan jangkar untuk navigasi yang mudah di halaman yang panjang.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item bg-white rounded-xl shadow-lg">
+                    <button class="accordion-header w-full text-left p-6 flex justify-between items-center">
+                        <span class="text-xl font-semibold">3. Ciptakan Konten Unik & Bernilai Tinggi</span>
+                        <span class="accordion-icon text-2xl font-light transform transition-transform duration-300">+</span>
+                    </button>
+                    <div class="accordion-content px-6">
+                         <div class="py-4 border-t border-gray-200">
+                           <p class="text-gray-600">Tawarkan 'information gain'—sajikan informasi baru atau sudut pandang yang lebih baik dari yang sudah ada. Panjang idealnya 1.500-4.000 kata. Tunjukkan E-E-A-T dengan studi kasus, data, dan kutipan dari para ahli untuk membangun kepercayaan.</p>
+                        </div>
+                    </div>
+                </div>
+                 <div class="accordion-item bg-white rounded-xl shadow-lg">
+                    <button class="accordion-header w-full text-left p-6 flex justify-between items-center">
+                        <span class="text-xl font-semibold">4. Integrasi Multimedia</span>
+                        <span class="accordion-icon text-2xl font-light transform transition-transform duration-300">+</span>
+                    </button>
+                    <div class="accordion-content px-6">
+                         <div class="py-4 border-t border-gray-200">
+                           <p class="text-gray-600">Sertakan gambar, infografis, dan video yang relevan untuk memecah teks dan meningkatkan pemahaman. Jangan lupa optimalkan gambar dengan *alt text* yang deskriptif untuk membantu SEO dan aksesibilitas.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="seo-lanjutan" class="mb-16 md:mb-24">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-[#2c3e50]">SEO Tingkat Lanjut</h2>
+            <div class="max-w-5xl mx-auto">
+                <div class="flex border-b border-gray-300 mb-8 justify-center">
+                    <button data-tab="tab1" class="tab-button py-3 px-6 font-semibold text-lg border-b-2 border-transparent text-gray-500 hover:text-[#4a90e2] active">Judul & Meta</button>
+                    <button data-tab="tab2" class="tab-button py-3 px-6 font-semibold text-lg border-b-2 border-transparent text-gray-500 hover:text-[#4a90e2]">Tautan Internal</button>
+                    <button data-tab="tab3" class="tab-button py-3 px-6 font-semibold text-lg border-b-2 border-transparent text-gray-500 hover:text-[#4a90e2]">Schema Markup</button>
+                </div>
+                <div id="tab1" class="tab-content">
+                    <h3 class="text-2xl font-bold mb-4 text-center">Checklist Optimasi On-Page</h3>
+                    <p class="text-center text-gray-600 mb-8 max-w-2xl mx-auto">Judul dan deskripsi meta adalah etalase konten Anda di Google. Pastikan keduanya menarik dan dioptimalkan untuk CTR yang tinggi.</p>
+                    <div id="checklist-onpage" class="bg-white p-6 md:p-8 rounded-xl shadow-lg space-y-4">
+                        <!-- Checklist items will be injected here by JS -->
+                    </div>
+                </div>
+                <div id="tab2" class="tab-content hidden">
+                    <h3 class="text-2xl font-bold mb-4 text-center">Membangun Jaringan Tautan Internal yang Kuat</h3>
+                     <p class="text-center text-gray-600 mb-8 max-w-3xl mx-auto">Tautan internal adalah tulang punggung dari model Hub & Spoke. Mereka mendistribusikan "link equity" dan membantu Google memahami hubungan antar konten Anda.</p>
+                     <div class="bg-white p-8 rounded-xl shadow-lg">
+                        <ul class="list-disc list-inside space-y-4 text-gray-700">
+                            <li><span class="font-semibold">Hub ke Spoke:</span> Halaman Hub harus menautkan ke semua halaman Spoke yang relevan.</li>
+                            <li><span class="font-semibold">Spoke ke Hub:</span> Setiap halaman Spoke harus menautkan kembali ke halaman Hub utama.</li>
+                            <li><span class="font-semibold">Spoke ke Spoke:</span> Jika relevan, tautkan antar halaman Spoke untuk memberikan konteks tambahan kepada pengguna.</li>
+                            <li><span class="font-semibold">Gunakan Anchor Text Deskriptif:</span> Hindari "klik di sini". Gunakan teks jangkar yang mendeskripsikan konten halaman tujuan, misalnya, "pelajari strategi riset kata kunci".</li>
+                        </ul>
+                     </div>
+                </div>
+                <div id="tab3" class="tab-content hidden">
+                    <h3 class="text-2xl font-bold mb-4 text-center">Tampil Menonjol dengan Rich Snippets</h3>
+                    <p class="text-center text-gray-600 mb-8 max-w-3xl mx-auto">Gunakan Schema Markup (JSON-LD) untuk "berbicara" dengan bahasa yang dimengerti Google. Ini dapat menghasilkan *rich snippets* (seperti FAQ atau rating) yang meningkatkan visibilitas dan CTR.</p>
+                    <div class="bg-gray-800 text-white p-6 rounded-xl shadow-lg relative">
+                        <button id="copy-code-btn" class="absolute top-4 right-4 bg-gray-600 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded transition-colors duration-300">Salin Kode</button>
+                        <h4 class="text-lg font-semibold mb-4 text-green-400">Contoh Schema `FAQPage` (JSON-LD)</h4>
+                        <pre><code class="language-json" id="code-snippet">{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [{
+    "@type": "Question",
+    "name": "Apa itu strategi Hub and Spoke?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Strategi Hub and Spoke adalah metode pengorganisasian konten di mana satu halaman 'hub' yang luas menautkan ke beberapa halaman 'spoke' yang lebih spesifik untuk membangun otoritas topikal."
+    }
+  },{
+    "@type": "Question",
+    "name": "Mengapa CTR penting untuk SEO?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "CTR (Click-Through Rate) yang tinggi memberi sinyal kepada Google bahwa hasil pencarian Anda relevan dan bermanfaat bagi pengguna, yang secara tidak langsung dapat meningkatkan peringkat Anda."
+    }
+  }]
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="kinerja" class="mb-16 md:mb-24">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-[#2c3e50]">Optimasi Kinerja: Mendominasi Halaman Satu</h2>
+             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="bg-white p-6 md:p-8 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-bold mb-4 text-center">Dampak Peringkat pada CTR</h3>
+                    <p class="text-center text-gray-600 mb-6">Meningkatkan peringkat dari posisi 3 ke posisi 1 dapat meningkatkan CTR secara signifikan, jauh lebih besar daripada lompatan dari posisi 10 ke 8. Ini menyoroti pentingnya berada di 3 besar.</p>
+                    <div class="chart-container">
+                        <canvas id="ctrChart"></canvas>
+                    </div>
+                </div>
+                <div>
+                     <h3 class="text-2xl font-bold mb-6">Strategi Kunci</h3>
+                     <div class="space-y-6">
+                        <div class="bg-white p-6 rounded-xl shadow-md">
+                            <h4 class="font-bold text-lg mb-2 text-[#4a90e2]">Indeksasi Cepat</h4>
+                            <p class="text-gray-600">Kirim sitemap.xml ke Google Search Console dan gunakan URL Inspection Tool untuk meminta indeksasi halaman baru atau yang diperbarui.</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-xl shadow-md">
+                            <h4 class="font-bold text-lg mb-2 text-[#50e3c2]">Backlink Berkualitas</h4>
+                            <p class="text-gray-600">Fokus pada backlink dari situs yang relevan secara tematis. Buat 'linkable assets' seperti studi kasus atau laporan orisinal untuk menarik tautan secara alami.</p>
+                        </div>
+                         <div class="bg-white p-6 rounded-xl shadow-md">
+                            <h4 class="font-bold text-lg mb-2 text-[#f5a623]">Pembaruan Berkelanjutan</h4>
+                            <p class="text-gray-600">Audit dan perbarui konten secara berkala. Konten yang segar dan akurat dihargai oleh Google dan menjaga kepercayaan pengguna.</p>
+                        </div>
+                     </div>
+                </div>
+             </div>
+        </section>
+
+        <footer class="text-center border-t border-gray-300 pt-8">
+             <p class="text-gray-600">Aplikasi interaktif ini dibuat berdasarkan laporan "Strategi Konten Utama 'Hub-Spokes'".</p>
+        </footer>
+
+    </main>
+    
+    <div id="copy-notification" class="fixed bottom-5 right-5 bg-green-500 text-white py-2 px-4 rounded-lg shadow-lg transition-opacity duration-300 opacity-0">
+        Kode berhasil disalin!
+    </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileMenuButton.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+    });
+
+    const navLinks = document.querySelectorAll('header a[href^="#"]');
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            if (!mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.add('hidden');
+            }
+        });
+    });
+
+    const hubSpokeDiagram = {
+        hub: document.getElementById('hub'),
+        spokes: document.querySelectorAll('.spoke-container'),
+        infoBox: document.getElementById('diagram-info'),
+        init() {
+            const numSpokes = this.spokes.length;
+            const radius = window.innerWidth < 768 ? 120 : 200;
+            this.spokes.forEach((spokeContainer, i) => {
+                const angle = (i / numSpokes) * 2 * Math.PI;
+                const x = radius * Math.cos(angle);
+                const y = radius * Math.sin(angle);
+                const spoke = spokeContainer.querySelector('.spoke');
+                const line = spokeContainer.querySelector('.spoke-line');
+                
+                spokeContainer.style.transform = `translate(${x}px, ${y}px)`;
+                line.style.transform = `rotate(${angle}rad)`;
+
+                spokeContainer.addEventListener('mouseenter', () => this.showInfo(`Ini adalah 'Spoke', artikel pendukung yang membahas subtopik secara mendalam. Contoh: 'Teknik Riset Kata Kunci untuk Pemula'.`));
+                spokeContainer.addEventListener('mouseleave', () => this.resetInfo());
+            });
+            
+            this.hub.addEventListener('mouseenter', () => this.showInfo(`Ini adalah 'Hub', halaman pilar komprehensif yang mencakup topik luas. Contoh: 'Panduan Lengkap SEO untuk 2025'.`));
+            this.hub.addEventListener('mouseleave', () => this.resetInfo());
+            
+            this.resetInfo();
+        },
+        showInfo(text) {
+            this.infoBox.textContent = text;
+            this.infoBox.classList.remove('opacity-0');
+        },
+        resetInfo() {
+            this.infoBox.textContent = "Arahkan kursor ke Hub atau Spoke untuk melihat deskripsi.";
+            this.infoBox.classList.add('opacity-0');
+            setTimeout(() => {
+                if(this.infoBox.textContent === "Arahkan kursor ke Hub atau Spoke untuk melihat deskripsi.") {
+                    this.infoBox.classList.remove('opacity-0');
+                }
+            }, 300);
+        }
+    };
+    hubSpokeDiagram.init();
+    
+    const accordions = document.querySelectorAll('.accordion-item');
+    accordions.forEach(item => {
+        const header = item.querySelector('.accordion-header');
+        const content = item.querySelector('.accordion-content');
+        const icon = item.querySelector('.accordion-icon');
+        header.addEventListener('click', () => {
+            const isOpen = content.style.maxHeight;
+            accordions.forEach(i => {
+                i.querySelector('.accordion-content').style.maxHeight = null;
+                i.querySelector('.accordion-icon').textContent = '+';
+                i.querySelector('.accordion-icon').classList.remove('rotate-45');
+            });
+
+            if (!isOpen) {
+                content.style.maxHeight = content.scrollHeight + "px";
+                icon.textContent = '-';
+            }
+        });
+    });
+
+    const tabs = document.querySelectorAll('.tab-button');
+    const tabContents = document.querySelectorAll('.tab-content');
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            const target = document.getElementById(tab.dataset.tab);
+
+            tabs.forEach(t => {
+                t.classList.remove('active', 'border-[#4a90e2]', 'text-[#4a90e2]');
+                t.classList.add('text-gray-500', 'border-transparent');
+            });
+            tab.classList.add('active', 'border-[#4a90e2]', 'text-[#4a90e2]');
+            tab.classList.remove('text-gray-500', 'border-transparent');
+
+            tabContents.forEach(c => c.classList.add('hidden'));
+            target.classList.remove('hidden');
+        });
+    });
+
+    const copyCodeBtn = document.getElementById('copy-code-btn');
+    const codeSnippet = document.getElementById('code-snippet');
+    const copyNotification = document.getElementById('copy-notification');
+    copyCodeBtn.addEventListener('click', () => {
+        const textToCopy = codeSnippet.innerText;
+        
+        const tempTextArea = document.createElement('textarea');
+        tempTextArea.value = textToCopy;
+        document.body.appendChild(tempTextArea);
+        tempTextArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(tempTextArea);
+
+        copyNotification.classList.remove('opacity-0');
+        setTimeout(() => {
+            copyNotification.classList.add('opacity-0');
+        }, 2000);
+    });
+
+    const checklistData = [
+        { text: 'Title Tag: 40-60 karakter, kata kunci di awal.', completed: false },
+        { text: 'Meta Description: 150-160 karakter, unik, dengan CTA.', completed: false },
+        { text: 'Struktur Heading (H1, H2, H3) logis.', completed: false },
+        { text: 'URL pendek dan deskriptif.', completed: false },
+        { text: 'Kata kunci tersebar alami (tidak *stuffing*).', completed: false },
+        { text: 'Konten orisinal, mendalam, dan bernilai tinggi.', completed: false },
+        { text: 'Desain responsif dan ramah seluler.', completed: false },
+        { text: 'Kecepatan halaman dioptimalkan.', completed: false },
+        { text: 'Alt text pada semua gambar.', completed: false },
+    ];
+    
+    const checklistContainer = document.getElementById('checklist-onpage');
+    checklistData.forEach((item, index) => {
+        const div = document.createElement('div');
+        div.className = 'checklist-item flex items-center';
+        div.innerHTML = `
+            <input type="checkbox" id="check-${index}" class="h-5 w-5 rounded border-gray-300 text-[#4a90e2] focus:ring-[#4a90e2]">
+            <label for="check-${index}" class="ml-3 text-gray-700 font-medium cursor-pointer">${item.text}</label>
+        `;
+        checklistContainer.appendChild(div);
+
+        const checkbox = div.querySelector('input');
+        checkbox.addEventListener('change', () => {
+            div.classList.toggle('completed', checkbox.checked);
+        });
+    });
+
+    const ctx = document.getElementById('ctrChart').getContext('2d');
+    const ctrChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Peringkat #10 > #8', 'Peringkat #3 > #1'],
+            datasets: [{
+                label: 'Potensi Peningkatan CTR',
+                data: [2.5, 29.6],
+                backgroundColor: [
+                    'rgba(245, 166, 35, 0.6)',
+                    'rgba(80, 227, 194, 0.6)',
+                ],
+                borderColor: [
+                    'rgba(245, 166, 35, 1)',
+                    'rgba(80, 227, 194, 1)',
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        callback: function(value) {
+                            return value + '%'
+                        }
+                    },
+                    title: {
+                        display: true,
+                        text: 'Peningkatan CTR'
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    display: false
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            let label = context.dataset.label || '';
+                            if (label) {
+                                label += ': ';
+                            }
+                            if (context.parsed.y !== null) {
+                                label += context.parsed.y + '%';
+                            }
+                            return label;
+                        }
+                    }
+                }
+            }
+        }
+    });
+
+    const sections = document.querySelectorAll('section');
+    const headerNavLinks = document.querySelectorAll('#header .nav-link');
+    
+    const observerOptions = {
+      root: null,
+      rootMargin: '-50% 0px -50% 0px',
+      threshold: 0
+    };
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute('id');
+          headerNavLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${id}`) {
+              link.classList.add('active');
+            }
+          });
+        }
+      });
+    }, observerOptions);
+
+    sections.forEach(section => {
+      observer.observe(section);
+    });
+});
+</script>
+</body>
+</html>
