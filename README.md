@@ -34,9 +34,9 @@ Ini adalah pusat diskusi kami, tempat kami berbagi pengalaman, melakukan Q&A, da
 
 | Tautan | Tujuan | Link |
 | :--- | :--- | :--- |
-| **Profil Profesional** | Identitas, Portofolio, dan Kontak Pribadi Jim Koto. | `https://jimkoto.my.id` |
-| **Akomoda Network** | Portofolio Bisnis Global & Layanan Digital. | `https://AkomodaNetwork.com` |
-| **AI Holistic** | Solusi AI untuk Optimasi Bisnis. | `https://ai-holistic.xyz` |
+| **Profil Profesional** | Identitas, Portofolio, dan Kontak Pribadi Jim Koto. | https://jimkoto.my.id |
+| **Akomoda Network** | Portofolio Bisnis Global & Layanan Digital. | https://AkomodaNetwork.com |
+| **AI Holistic** | Solusi AI untuk Optimasi Bisnis. | https://ai-holistic.xyz |
 
 ***
 
