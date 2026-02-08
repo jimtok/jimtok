@@ -36,7 +36,7 @@ Ini adalah pusat diskusi kami, tempat kami berbagi pengalaman, melakukan Q&A, da
 | :--- | :--- | :--- |
 | **Profil Profesional** | Identitas, Portofolio, dan Kontak Pribadi Jim Koto. | https://jimkoto.my.id |
 | **Akomoda Network** | Portofolio Bisnis Global & Layanan Digital. | https://AkomodaNetwork.com |
-| **AI Holistic** | Solusi AI untuk Optimasi Bisnis. | https://ai-holistic.xyz |
+| **Holistic Integrative** | Solusi AI untuk Optimasi Bisnis. | https://aiholistic.xyz |
 
 ***
 
