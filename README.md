@@ -1,6 +1,6 @@
 # 🚀 JIMTOK: DIGITAL ECOSYSTEM OPTIMIZATION LAB
 
-👋 Hi, I’m **Jim Koto**. Selamat datang di *Home Base* Ekosistem Digital kami—tempat di mana teori bertemu implementasi untuk hasil nyata.
+👋 Hi, I’m **Jim**. Selamat datang di *Jim Labs*
 
 ## ✨ OUR MOTTO: BEYOND EXPECTATIONS
 
@@ -26,7 +26,7 @@ JIMTOK adalah Komunitas. Kami mengundang Anda untuk berkontribusi dan belajar be
 
 Ini adalah pusat diskusi kami, tempat kami berbagi pengalaman, melakukan Q&A, dan membahas tantangan Ekosistem Digital secara mendalam.
 
-[![Bergabung ke Jimtok's Community](https://img.shields.io/badge/YouTube_Community-Diskusi_Aktif-red?style=for-the-badge&logo=youtube)](https://www.youtube.com/@jimtok-channel/community)
+[![Bergabung ke Akomoda Network](https://img.shields.io/badge/YouTube_Community-Diskusi_Aktif-red?style=for-the-badge&logo=youtube)]([https://www.youtube.com/@jimtok-channel/community](https://www.youtube.com/@akomodanetwork))
 
 ### **2. 💼 Kemitraan & Personal Branding**
 
