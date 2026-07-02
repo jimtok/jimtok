@@ -26,7 +26,7 @@ JIMTOK adalah Komunitas. Kami mengundang Anda untuk berkontribusi dan belajar be
 
 Ini adalah pusat diskusi kami, tempat kami berbagi pengalaman, melakukan Q&A, dan membahas tantangan Ekosistem Digital secara mendalam.
 
-[![Bergabung ke Akomoda Network](https://img.shields.io/badge/YouTube_Community-Diskusi_Aktif-red?style=for-the-badge&logo=youtube)]([https://www.youtube.com/@jimtok-channel/community](https://www.youtube.com/@akomodanetwork))
+[[Bergabung ke Akomoda Network] https://www.youtube.com/@akomodanetwork
 
 ### **2. 💼 Kemitraan & Personal Branding**
 
